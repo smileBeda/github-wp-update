@@ -1,10 +1,10 @@
 <?php
 /**
- * The main plugin file
+ * Minimal Example Plugin
  *
  * @link    https://site.tld
- * @since   1.0.0 Introduced on 2023-08-01 15:30
- * @package Plugins\PluginName
+ * @since   1.0.0 Introduced on 2023-10-14 15:30
+ * @package Plugins
  * @author  Your Name <your-name@site.tld>
  */
 
@@ -15,9 +15,9 @@
  *
  * Plugin Name:       My Plugin Name
  * Plugin URI:        https://site.tld/plugin-name-uri/
- * Update URI:        https://github.com/smileBeda/github-wp-update
+ * Update URI:        https://de-facto-does-not-matter.tld/
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Ideally, your WordPress forum username.
  * Requires at least: 5.5
  * Requires PHP:      7.4
@@ -29,6 +29,16 @@
  * Domain Path:       /resources/languages
  */
 
-require_once( plugin_dir_path( __FILE__ ) . 'update.php' );
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-$github_updater = new GitHub_Updater( plugin_dir_path( __FILE__ ) . 'plugin-name.php', '1.0.1', 'https://api.github.com/repos/smileBeda/github-wp-update');
+/**
+ * Require the GitHub_Updater class.
+ *
+ * Each of your plugins will require GitHub_Updater to be loaded under a different namespace.
+ * Ideally use an autoloader, but for the sake of functionality we are using require_once here.
+ */
+require_once plugin_dir_path( __FILE__ ) . 'update.php';
+use MyPlugin\GitHub_Updater;
+( new GitHub_Updater( plugin_basename( __FILE__ ), '1.0.1', 'https://api.github.com/repos/smileBeda/github-wp-update' ) )->init();
