@@ -157,8 +157,8 @@ class GitHub_Updater {
 			$transient->response[ $this->plugin_slug ] = (object) array(
 				'slug'        => $this->plugin_slug,
 				'new_version' => $release['tag_name'],
-				'package'     => $package, // URL to the ZIP file
-				'url'         => $this->github_repo_url, // URL to the plugin's page (e.g., its GitHub repo)
+				'package'     => $package,
+				'url'         => $this->github_repo_url,
 			);
 		}
 
