@@ -28,3 +28,7 @@
  * Text Domain:       plugin-name
  * Domain Path:       /resources/languages
  */
+
+require_once( plugin_dir_path( __FILE__ ) . 'update.php' );
+
+$github_updater = new GitHub_Updater( plugin_dir_path( __FILE__ ) . 'plugin-name.php', '1.0.1', 'https://api.github.com/repos/smileBeda/github-wp-update');
